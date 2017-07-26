@@ -1,0 +1,26 @@
+From 021802d40a530b22cf6a36a0ebdcb4bc065b37c5 Mon Sep 17 00:00:00 2001
+From: root <root@spring1944.int>
+Date: Mon, 12 Jun 2017 13:23:10 +0200
+Subject: [PATCH 2/2] Revert "part of #5322:"
+
+This reverts commit a1f8bb55da2174ff196be3641a9dc93a65cde662.
+---
+ tools/unitsync/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/unitsync/CMakeLists.txt b/tools/unitsync/CMakeLists.txt
+index 402a2f6..22a6e1a 100644
+--- a/tools/unitsync/CMakeLists.txt
++++ b/tools/unitsync/CMakeLists.txt
+@@ -38,7 +38,7 @@ ADD_DEFINITIONS(-DNOT_USING_CREG)
+ ADD_DEFINITIONS(-DHEADLESS)
+ ADD_DEFINITIONS(-DNO_SOUND)
+ ADD_DEFINITIONS(-DBITMAP_NO_OPENGL)
+-#ADD_DEFINITIONS(-DENABLE_DEPRECATED_FUNCTIONS)
++ADD_DEFINITIONS(-DENABLE_DEPRECATED_FUNCTIONS)
+ REMOVE_DEFINITIONS(-DTHREADPOOL)
+ 
+ set(ENGINE_SRC_ROOT "../../rts")
+-- 
+2.10.2
+

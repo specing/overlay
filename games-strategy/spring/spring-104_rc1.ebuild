@@ -65,6 +65,19 @@ src_test() {
 	cmake-utils_src_test
 }
 
+src_prepare() {
+	git submodule init || die
+	git submodule update || die
+
+	# Revert SPADS incompatibility
+	epatch "$FILESDIR/v1-0001-revert-remove-disabled-deprecated-unitsync-code.patch"
+	epatch "$FILESDIR/v1-0002-revert-part-of-5322.patch"
+	# Force proper version as "HEAD" keeps appearing instead of "develop" due to
+	# the above reverts.
+	printf "%s develop\n" "$(git describe --long --abbrev=7)" > VERSION
+	rm -rf ./.git || die
+}
+
 src_configure() {
 	local -a mycmakeargs
 
